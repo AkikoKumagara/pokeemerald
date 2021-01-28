@@ -748,6 +748,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_WikiHoenn:
 	
 LittlerootTown_ProfessorBirchsLab_EventScript_Kanto:
 	setvar VAR_STARTER_REGION, 1
+	clearflag FLAG_KANTO_STARTER
+	clearflag FLAG_JOHTO_STARTER
+	clearflag FLAG_HOENN_STARTER
+	setflag FLAG_KANTO_STARTER
 	showmonpic SPECIES_BULBASAUR, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_KantoStartersGrass, MSGBOX_DEFAULT
 	hidemonpic
@@ -763,6 +767,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Kanto:
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Johto:
 	setvar VAR_STARTER_REGION, 2
+	clearflag FLAG_KANTO_STARTER
+	clearflag FLAG_JOHTO_STARTER
+	clearflag FLAG_HOENN_STARTER
+	setflag FLAG_JOHTO_STARTER
 	showmonpic SPECIES_CHIKORITA, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersGrass, MSGBOX_DEFAULT
 	hidemonpic
@@ -778,6 +786,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Johto:
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Hoenn:
 	setvar VAR_STARTER_REGION, 3
+	clearflag FLAG_KANTO_STARTER
+	clearflag FLAG_JOHTO_STARTER
+	clearflag FLAG_HOENN_STARTER
+	setflag FLAG_HOENN_STARTER
 	showmonpic SPECIES_TREECKO, 10, 3
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoennStartersGrass, MSGBOX_DEFAULT
 	hidemonpic
