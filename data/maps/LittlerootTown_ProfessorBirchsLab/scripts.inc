@@ -704,7 +704,95 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork:: @ 
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_PC:: @ 81FA4BB
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearch, MSGBOX_SIGN
+	lock
+	compare VAR_STARTER_REGION, 1
+	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_WikiKanto
+	compare VAR_STARTER_REGION, 2
+	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_WikiJohto
+	compare VAR_STARTER_REGION, 3
+	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_WikiHoenn
+	end
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_WikiKanto:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchKanto, MSGBOX_DEFAULT
+	multichoice 0, 0, MULTI_STARTER_REGION, 0
+	switch VAR_RESULT
+	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_Kanto
+	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_Johto
+	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_Hoenn
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	case MULTI_B_PRESSED, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_WikiJohto:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchJohto, MSGBOX_DEFAULT
+	multichoice 0, 0, MULTI_STARTER_REGION, 0
+	switch VAR_RESULT
+	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_Kanto
+	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_Johto
+	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_Hoenn
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	case MULTI_B_PRESSED, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_WikiHoenn:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchHoenn, MSGBOX_DEFAULT
+	multichoice 0, 0, MULTI_STARTER_REGION, 0
+	switch VAR_RESULT
+	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_Kanto
+	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_Johto
+	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_Hoenn
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	case MULTI_B_PRESSED, LittlerootTown_ProfessorBirchsLab_EventScript_Exit
+	end
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_Kanto:
+	setvar VAR_STARTER_REGION, 1
+	showmonpic SPECIES_BULBASAUR, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_KantoStartersGrass, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_CHARMANDER, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_KantoStartersFire, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_SQUIRTLE, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_KantoStartersWater, MSGBOX_DEFAULT
+	hidemonpic
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_RegionStartersBye, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Johto:
+	setvar VAR_STARTER_REGION, 2
+	showmonpic SPECIES_CHIKORITA, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersGrass, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_CYNDAQUIL, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersFire, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_TOTODILE, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersWater, MSGBOX_DEFAULT
+	hidemonpic
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_RegionStartersBye, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Hoenn:
+	setvar VAR_STARTER_REGION, 3
+	showmonpic SPECIES_TREECKO, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoennStartersGrass, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_TORCHIC, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoennStartersFire, MSGBOX_DEFAULT
+	hidemonpic
+	showmonpic SPECIES_MUDKIP, 10, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HoennStartersWater, MSGBOX_DEFAULT
+	hidemonpic
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_RegionStartersBye, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Exit:
+	release
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Bookshelf:: @ 81FA4C4
@@ -884,8 +972,8 @@ LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine: @ 81FB0A2
 	.string "The PROF must use this for research.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearch: @ 81FB0E7
-	.string "It's a PC used for research.\n"
-	.string "Better not mess around with it.$"
+	.string "It's a wiki page about starter POKéMON.\p"
+	.string "Which region to click?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CrammedWithBooksOnPokemon: @ 81FB124
 	.string "It's crammed with books on POKéMON.$"
@@ -1070,3 +1158,52 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall: @ 81FBD1A
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchKanto:
+	.string "It's a wiki page about starter POKéMON.\n"
+	.string "It's showcasing the KANTO region!\p"
+	.string "Which region to click?$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchJohto:
+	.string "It's a wiki page about starter POKéMON.\n"
+	.string "It's showcasing the JOHTO region!\p"
+	.string "Which region to click?$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearchHoenn:
+	.string "It's a wiki page about starter POKéMON.\n"
+	.string "It's showcasing the HOENN region!\p"
+	.string "Which region to click?$"
+
+// Kanto starters
+LittlerootTown_ProfessorBirchsLab_Text_KantoStartersGrass:
+	.string "BULBASAUR...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_KantoStartersFire:
+	.string "CHARMANDER...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_KantoStartersWater:
+	.string "SQUIRTLE...$"
+
+// Johto starters
+LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersGrass:
+	.string "CHIKORITA...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersFire:
+	.string "CYNDAQUIL...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_JohtoStartersWater:
+	.string "TOTODILE...$"
+
+// Hoenn starters
+LittlerootTown_ProfessorBirchsLab_Text_HoennStartersGrass:
+	.string "TREECKO...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_HoennStartersFire:
+	.string "TORCHIC...$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_HoennStartersWater:
+	.string "MUDKIP...$"
+	
+// Better get going!
+LittlerootTown_ProfessorBirchsLab_Text_RegionStartersBye:
+	.string "Better get going!$"

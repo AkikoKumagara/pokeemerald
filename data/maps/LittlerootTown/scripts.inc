@@ -127,6 +127,7 @@ LittlerootTown_EventScript_StepOffTruckMale:: @ 81E7EDB
 	lockall
 	setvar VAR_0x8004, 5
 	setvar VAR_0x8005, 8
+	setvar VAR_STARTER_REGION, 3
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 255, 8, 8
@@ -138,6 +139,7 @@ LittlerootTown_EventScript_StepOffTruckFemale:: @ 81E7EF9
 	lockall
 	setvar VAR_0x8004, 14
 	setvar VAR_0x8005, 8
+	setvar VAR_STARTER_REGION, 3
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F, 255, 2, 8
