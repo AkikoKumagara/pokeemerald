@@ -560,6 +560,11 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
 	compare VAR_RESULT, FEMALE
 	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_TakeExpShare, MSGBOX_DEFAULT
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_ProfessorBirchsLab_Movement_FaceForExpShare
+	waitmovement 0
+	giveitem ITEM_EXP_SHARE, 1
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_TakeExpShare2, MSGBOX_DEFAULT
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
 	setvar VAR_OLDALE_TOWN_STATE, 1
@@ -567,6 +572,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex:: @ 81FA2F8
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
 	releaseall
 	end
+
+LittlerootTown_ProfessorBirchsLab_Movement_FaceForExpShare:
+	face_up
+	step_end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls:: @ 81FA352
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
@@ -796,7 +805,18 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex: @ 81FAB22
 	.string "Here, {PLAYER}{KUN}, I ordered this for my\n"
 	.string "research, but I think you should have\l"
 	.string "this POKéDEX.$"
-
+	
+LittlerootTown_ProfessorBirchsLab_Text_TakeExpShare:
+	.string "PROF. BIRCH: You should make use of this\n"
+	.string "EXP. SHARE too!$"
+	
+LittlerootTown_ProfessorBirchsLab_Text_TakeExpShare2:
+	.string "PROF. BIRCH: Turn this on and all POKéMON\n"
+	.string "in your party will receive experience,\l"
+	.string "even those that didn't see battle!\p"
+	.string "Train lots of different POKéMON to aid\n"
+	.string "you in your journey!$"
+	
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex: @ 81FAC32
 	.string "{PLAYER} received the POKéDEX!$"
 
